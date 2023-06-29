@@ -15,11 +15,21 @@ function App() {
   const [books, setBooks] = useState([]);
 
   const changeBookShelf = (shelf, bookId) => {
-    // TODO: make sure setting book state works correctly and book goes to correct shelf
-    // setBooks(
-    //   ...books,
-    //   books.filter((b) => b.id === bookId).map((b) => (b.shelf = shelf))
-    // );
+    const newBooks = books.map((b) => {
+      return b.id === bookId ? { ...b, shelf: shelf } : b;
+    });
+    setBooks(newBooks);
+
+    const finalBook = books.filter((b) => b.id === bookId);
+
+    // TODO: refactor this updating database, should consider returning a book rather than book id
+    const updateBook = async () => {
+      const res = await BooksAPI.update(finalBook[0], shelf);
+      // setBooks(res);
+      // console.log(res);
+    };
+
+    console.log(updateBook());
   };
 
   useEffect(() => {
