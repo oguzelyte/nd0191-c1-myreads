@@ -17,7 +17,7 @@ const BookList = ({ books, handleBookShelf }) => {
 };
 
 BookList.propTypes = {
-  book: PropTypes.array.isRequired,
+  books: PropTypes.array.isRequired,
   handleBookShelf: PropTypes.func.isRequired,
 };
 

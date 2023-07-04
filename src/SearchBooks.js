@@ -37,8 +37,8 @@ const SearchBooks = ({
 SearchBooks.propTypes = {
   handleSearchInput: PropTypes.func.isRequired,
   searchBooks: PropTypes.array.isRequired,
-  changeBookShelf: PropTypes.array.isRequired,
-  clearSearch: PropTypes.array.isRequired,
+  changeBookShelf: PropTypes.func.isRequired,
+  clearSearch: PropTypes.func.isRequired,
 };
 
 export default SearchBooks;
