@@ -31,7 +31,7 @@ const Dashboard = ({ shelves, books, changeBookShelf }) => {
   );
 };
 
-BookShelf.propTypes = {
+Dashboard.propTypes = {
   shelves: PropTypes.array.isRequired,
   books: PropTypes.array.isRequired,
   changeBookShelf: PropTypes.func.isRequired,
