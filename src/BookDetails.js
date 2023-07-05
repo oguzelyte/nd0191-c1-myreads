@@ -20,7 +20,6 @@ const BookDetails = () => {
 
     return () => (mounted = false);
   }, [id]);
-  console.log(book);
   return (
     <div className="book-info-box">
       <Link className="close-search" to="/">

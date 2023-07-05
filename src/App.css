@@ -139,7 +139,7 @@ body,
 
 .book-details {
   position: absolute;
-  z-index: 99;
+  z-index: 1;
   text-decoration: none;
   top: -7px;
   right: 0;

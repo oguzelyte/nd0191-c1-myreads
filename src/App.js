@@ -18,12 +18,16 @@ function App() {
     { name: "Read", id: "read" },
   ];
 
+  let bookFoundInShelf = false;
+
   const changeBookShelf = (shelf, book) => {
     BooksAPI.update(book, shelf);
 
-    const newBooks = books.map((b) => {
-      return b.id === book.id ? { ...b, shelf: shelf } : b;
-    });
+    const newBooks = books.find((b) => b.id === book.id)
+      ? books.map((b) => {
+          return b.id === book.id ? { ...b, shelf: shelf } : b;
+        })
+      : books.concat({ ...book, shelf: shelf });
 
     setBooks(newBooks);
     setSearchBooks(
@@ -47,6 +51,8 @@ function App() {
 
     return () => (mounted = false);
   }, []);
+
+  useEffect(() => {}, [bookFoundInShelf]);
 
   const updateSearchQuery = (event) => {
     const query = event.target.value;
@@ -78,6 +84,7 @@ function App() {
 
   const debouncedChangeHandler = useMemo(() => {
     return debounce(updateSearchQuery, 300);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [books, searchQuery]);
 
   const clearSearchedBooks = () => {
